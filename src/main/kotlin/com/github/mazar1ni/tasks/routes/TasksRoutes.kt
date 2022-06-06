@@ -25,10 +25,9 @@ fun Route.getAllTasks(tasksService: TasksService) {
 
             call.respond(
                 ApiResponse(
-                    200, AllTasksResponse(
-                        tasks.map { task ->
-                            TaskDto(task.title, task.description, task.uuid, task.timestamp, task.isCompleted)
-                        })
+                    200, AllTasksResponse(tasks.map { task ->
+                        TaskDto(task.title, task.description, task.uuid, task.timestamp, task.isCompleted)
+                    })
                 )
             )
             return@get
@@ -60,8 +59,25 @@ fun Route.syncTasks(tasksService: TasksService) {
 
             val tasks = tasksService.getTasksByUserId(userId)
 
+            val updatedTask =
+                if (request.lastUpdateTimestamp != null)
+                    tasks.filter { task ->
+                        task.timestamp > request.lastUpdateTimestamp &&
+                                request.tasks?.find { requestTask -> requestTask.uuid == task.uuid } == null
+                    }
+                else
+                    tasks
+
             call.respond(
-                ApiResponse(200, SyncTasksResponse(tasks.map { task -> task.uuid }))
+                ApiResponse(200, SyncTasksResponse(tasks.map { task -> task.uuid }, updatedTask.map { taskDao ->
+                    TaskDto(
+                        taskDao.title,
+                        taskDao.description,
+                        taskDao.uuid,
+                        taskDao.timestamp,
+                        taskDao.isCompleted
+                    )
+                }))
             )
             return@post
         }

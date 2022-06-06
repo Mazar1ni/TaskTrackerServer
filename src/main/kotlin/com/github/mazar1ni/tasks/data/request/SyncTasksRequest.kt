@@ -10,5 +10,7 @@ data class SyncTasksRequest(
     @SerialName("tasks")
     val tasks: List<TaskDto>?,
     @SerialName("deleted_tasks_uuid")
-    val deletedTasksUUID: List<DeletedTaskDto>?
+    val deletedTasksUUID: List<DeletedTaskDto>?,
+    @SerialName("last_update_timestamp")
+    val lastUpdateTimestamp: Long?
 )
