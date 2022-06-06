@@ -12,5 +12,7 @@ data class TaskDto(
     @SerialName("uuid")
     val uuid: String,
     @SerialName("timestamp")
-    val timestamp: Long
+    val timestamp: Long,
+    @SerialName("completed")
+    val isCompleted: Boolean
 )

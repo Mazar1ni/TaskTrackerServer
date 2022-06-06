@@ -9,6 +9,7 @@ data class TaskDao(
     val description: String,
     val uuid: String,
     val timestamp: Long,
+    val isCompleted: Boolean,
     @BsonId
     val id: String = ObjectId().toString()
 )

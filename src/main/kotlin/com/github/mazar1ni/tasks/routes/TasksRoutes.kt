@@ -27,7 +27,7 @@ fun Route.getAllTasks(tasksService: TasksService) {
                 ApiResponse(
                     200, AllTasksResponse(
                         tasks.map { task ->
-                            TaskDto(task.title, task.description, task.uuid, task.timestamp)
+                            TaskDto(task.title, task.description, task.uuid, task.timestamp, task.isCompleted)
                         })
                 )
             )

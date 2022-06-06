@@ -22,14 +22,15 @@ class TasksRepository(db: CoroutineDatabase) {
                 combine(
                     setValue(TaskDao::title, it.title),
                     setValue(TaskDao::description, it.description),
-                    setValue(TaskDao::timestamp, it.timestamp)
+                    setValue(TaskDao::timestamp, it.timestamp),
+                    setValue(TaskDao::isCompleted, it.isCompleted)
                 )
             )
 
-            val task = tasks.findOne(and(TaskDao::userId eq userId, TaskDao::uuid eq it.uuid),)
+            val task = tasks.findOne(and(TaskDao::userId eq userId, TaskDao::uuid eq it.uuid))
 
             if (task == null)
-                tasks.insertOne(TaskDao(userId, it.title, it.description, it.uuid, it.timestamp))
+                tasks.insertOne(TaskDao(userId, it.title, it.description, it.uuid, it.timestamp, it.isCompleted))
         }
     }
 
