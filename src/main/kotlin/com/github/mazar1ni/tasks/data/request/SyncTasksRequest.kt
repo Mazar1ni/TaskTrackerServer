@@ -2,15 +2,13 @@ package com.github.mazar1ni.tasks.data.request
 
 import com.github.mazar1ni.tasks.data.models.remote.DeletedTaskDto
 import com.github.mazar1ni.tasks.data.models.remote.TaskDto
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class SyncTasksRequest(
-    @SerialName("tasks")
+    @SerializedName("tasks")
     val tasks: List<TaskDto>?,
-    @SerialName("deleted_tasks_uuid")
+    @SerializedName("deleted_tasks_uuid")
     val deletedTasksUUID: List<DeletedTaskDto>?,
-    @SerialName("last_update_timestamp")
+    @SerializedName("last_update_timestamp")
     val lastUpdateTimestamp: Long?
 )

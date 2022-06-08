@@ -1,14 +1,12 @@
 package com.github.mazar1ni.auth.data.request
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class RegisterRequest(
-    @SerialName("email")
+    @SerializedName("email")
     val email: String,
-    @SerialName("username")
+    @SerializedName("username")
     val username: String,
-    @SerialName("password")
+    @SerializedName("password")
     val password: String
 )

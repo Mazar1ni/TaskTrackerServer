@@ -1,18 +1,20 @@
 package com.github.mazar1ni.tasks.data.models.remote
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class TaskDto(
-    @SerialName("title")
+    @SerializedName("title")
     val title: String,
-    @SerialName("description")
+    @SerializedName("description")
     val description: String,
-    @SerialName("uuid")
+    @SerializedName("due_date")
+    val dueDate: Long?,
+    @SerializedName("has_time")
+    val hasTime: Boolean?,
+    @SerializedName("uuid")
     val uuid: String,
-    @SerialName("timestamp")
+    @SerializedName("timestamp")
     val timestamp: Long,
-    @SerialName("completed")
+    @SerializedName("completed")
     val isCompleted: Boolean
 )

@@ -7,6 +7,8 @@ data class TaskDao(
     val userId: String,
     val title: String,
     val description: String,
+    val dueDate: Long?,
+    val hasTime: Boolean?,
     val uuid: String,
     val timestamp: Long,
     val isCompleted: Boolean,

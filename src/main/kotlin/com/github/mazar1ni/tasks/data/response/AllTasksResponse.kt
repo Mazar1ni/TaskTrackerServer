@@ -1,11 +1,9 @@
 package com.github.mazar1ni.tasks.data.response
 
 import com.github.mazar1ni.tasks.data.models.remote.TaskDto
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class AllTasksResponse(
-    @SerialName("tasks")
+    @SerializedName("tasks")
     val tasks: List<TaskDto>
 )

@@ -1,12 +1,10 @@
 package com.github.mazar1ni.core.data.response
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class ApiResponse<T>(
-    @SerialName("status")
+    @SerializedName("status")
     val status: Int,
-    @SerialName("data")
+    @SerializedName("data")
     val data: T? = null
 )

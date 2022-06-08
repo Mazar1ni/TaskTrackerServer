@@ -1,12 +1,10 @@
 package com.github.mazar1ni.tasks.data.models.remote
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class DeletedTaskDto(
-    @SerialName("uuid")
+    @SerializedName("uuid")
     val uuid: String,
-    @SerialName("timestamp")
+    @SerializedName("timestamp")
     val timestamp: Long
 )
